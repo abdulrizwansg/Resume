@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
     }
 
     body{
@@ -28,41 +34,55 @@
       margin:auto;
     }
 
+    /* HEADER */
+
     header{
-      padding:80px 0 50px;
-      border-bottom:1px solid rgba(255,255,255,0.08);
+      padding:90px 0 70px;
       background:linear-gradient(135deg,#0f172a,#111827);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      position:relative;
+      overflow:hidden;
+    }
+
+    header::before{
+      content:'';
+      position:absolute;
+      width:400px;
+      height:400px;
+      background:rgba(56,189,248,0.08);
+      border-radius:50%;
+      top:-150px;
+      right:-100px;
+      filter:blur(50px);
     }
 
     .hero{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:40px;
-      flex-wrap:wrap;
+      position:relative;
+      z-index:2;
     }
 
-    .hero-text h1{
-      font-size:52px;
+    .hero h1{
+      font-size:56px;
       font-weight:700;
-      margin-bottom:10px;
+      margin-bottom:12px;
+      color:#ffffff;
     }
 
-    .hero-text h2{
-      font-size:22px;
+    .hero h2{
+      font-size:24px;
       color:#38bdf8;
       font-weight:500;
-      margin-bottom:25px;
+      margin-bottom:30px;
     }
 
-    .hero-text p{
-      max-width:700px;
+    .hero p{
+      max-width:850px;
       color:#cbd5e1;
       font-size:17px;
     }
 
     .contact{
-      margin-top:30px;
+      margin-top:35px;
       display:flex;
       flex-wrap:wrap;
       gap:15px;
@@ -73,25 +93,30 @@
       color:#fff;
       background:#1e293b;
       padding:12px 18px;
-      border-radius:10px;
-      transition:0.3s;
+      border-radius:12px;
+      transition:0.3s ease;
       font-size:14px;
+      border:1px solid transparent;
     }
 
     .contact a:hover{
       background:#38bdf8;
       color:#0f172a;
+      border-color:#38bdf8;
     }
 
+    /* SECTIONS */
+
     section{
-      padding:70px 0;
+      padding:80px 0;
     }
 
     .section-title{
-      font-size:32px;
-      margin-bottom:35px;
+      font-size:34px;
+      margin-bottom:40px;
       color:#38bdf8;
       position:relative;
+      display:inline-block;
     }
 
     .section-title::after{
@@ -100,62 +125,89 @@
       height:4px;
       background:#38bdf8;
       position:absolute;
-      bottom:-10px;
+      bottom:-12px;
       left:0;
       border-radius:10px;
     }
 
+    /* CARDS */
+
     .card-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:25px;
     }
 
     .card{
       background:#111827;
+      padding:28px;
+      border-radius:22px;
       border:1px solid rgba(255,255,255,0.05);
-      padding:25px;
-      border-radius:18px;
-      transition:0.3s;
+      transition:0.35s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:'';
+      position:absolute;
+      width:150px;
+      height:150px;
+      background:rgba(56,189,248,0.06);
+      border-radius:50%;
+      top:-60px;
+      right:-60px;
     }
 
     .card:hover{
-      transform:translateY(-5px);
+      transform:translateY(-8px);
       border-color:#38bdf8;
     }
 
     .card h3{
+      font-size:22px;
       margin-bottom:15px;
       color:#fff;
-      font-size:20px;
+      position:relative;
+      z-index:2;
     }
 
     .card p{
       color:#cbd5e1;
       font-size:15px;
+      position:relative;
+      z-index:2;
     }
+
+    /* EXPERIENCE */
 
     .experience{
       display:flex;
       flex-direction:column;
-      gap:25px;
+      gap:28px;
     }
 
     .exp-item{
       background:#111827;
-      padding:30px;
-      border-radius:18px;
+      padding:35px;
+      border-radius:22px;
       border-left:5px solid #38bdf8;
+      transition:0.3s;
+    }
+
+    .exp-item:hover{
+      transform:translateY(-4px);
     }
 
     .exp-item h3{
-      font-size:24px;
-      margin-bottom:5px;
+      font-size:26px;
+      margin-bottom:6px;
+      color:#fff;
     }
 
     .exp-item h4{
       color:#38bdf8;
-      margin-bottom:15px;
+      margin-bottom:18px;
       font-weight:500;
     }
 
@@ -164,9 +216,11 @@
     }
 
     .exp-item li{
-      margin-bottom:10px;
+      margin-bottom:12px;
       color:#cbd5e1;
     }
+
+    /* SKILLS */
 
     .skills{
       display:flex;
@@ -177,192 +231,341 @@
     .skill{
       background:#1e293b;
       padding:12px 18px;
-      border-radius:30px;
+      border-radius:40px;
       font-size:14px;
       color:#e2e8f0;
+      border:1px solid rgba(255,255,255,0.05);
+      transition:0.3s;
     }
 
+    .skill:hover{
+      background:#38bdf8;
+      color:#0f172a;
+      transform:translateY(-2px);
+    }
+
+    /* EDUCATION */
+
+    .education-card{
+      background:#111827;
+      padding:30px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .education-card h3{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    /* FOOTER */
+
     footer{
+      border-top:1px solid rgba(255,255,255,0.08);
       padding:30px 0;
       text-align:center;
-      border-top:1px solid rgba(255,255,255,0.08);
       color:#94a3b8;
       font-size:14px;
     }
 
+    /* RESPONSIVE */
+
     @media(max-width:768px){
-      .hero-text h1{
-        font-size:38px;
+
+      .hero h1{
+        font-size:40px;
       }
 
-      .hero-text h2{
-        font-size:18px;
+      .hero h2{
+        font-size:20px;
       }
+
+      .hero p{
+        font-size:16px;
+      }
+
+      .section-title{
+        font-size:28px;
+      }
+
     }
 
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="container hero">
+  <!-- HERO SECTION -->
 
-    <div class="hero-text">
+  <header>
+
+    <div class="container hero">
+
       <h1>ABDUL RIZWAN S G</h1>
-      <h2>Mechanical Design Lead | CAD Design Engineer | Plant 3D Specialist</h2>
+
+      <h2>
+        Mechanical Design Lead | CAD Design Engineer | Industrial Product & Equipment Design
+      </h2>
 
       <p>
         Mechanical Design professional with 15 years of experience in CAD engineering,
-        industrial equipment design, piping systems, skid packages, structural components,
-        and multidisciplinary engineering projects. Experienced in Plant 3D, Inventor,
-        SolidWorks, Revit, fabrication drawings, utility piping systems, and BIM-based
-        coordination environments.
+        machine design, industrial equipment design, piping systems, skid packages,
+        sheet metal components, structural assemblies, and multidisciplinary engineering projects.
+
+        Experienced in AutoCAD, Autodesk Inventor, SolidWorks, Plant 3D, and Revit with strong
+        expertise in 3D modelling, fabrication drawings, GD&T, manufacturing-oriented design,
+        utility piping systems, and project coordination.
+
+        Skilled in handling complete design workflows from concept development to fabrication
+        support, including BOM preparation, assembly detailing, design reviews, and cross-functional coordination.
       </p>
 
       <div class="contact">
-        <a href="mailto:abdulrizwan.sg@gmail.com">Email</a>
-        <a href="tel:+919036261001">Call</a>
+
+        <a href="mailto:abdulrizwan.sg@gmail.com">
+          Email
+        </a>
+
+        <a href="tel:+919036261001">
+          Call
+        </a>
+
         <a href="https://www.linkedin.com/in/abdul-rizwan-4a14a62a1/" target="_blank">
           LinkedIn
         </a>
+
       </div>
+
     </div>
 
-  </div>
-</header>
+  </header>
 
-<section>
-  <div class="container">
+  <!-- CORE EXPERTISE -->
 
-    <h2 class="section-title">Core Expertise</h2>
+  <section>
 
-    <div class="card-grid">
+    <div class="container">
 
-      <div class="card">
-        <h3>Plant 3D & BIM</h3>
+      <h2 class="section-title">Core Expertise</h2>
+
+      <div class="card-grid">
+
+        <div class="card">
+          <h3>Mechanical & Machine Design</h3>
+          <p>
+            Industrial machine design, equipment development,
+            skid packages, structural assemblies, and manufacturing-oriented engineering.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>CAD & 3D Modelling</h3>
+          <p>
+            3D CAD modelling, fabrication drawings, assembly detailing,
+            GD&T, BOM generation, and production support documentation.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Piping & Industrial Systems</h3>
+          <p>
+            Process piping, utility piping, Plant 3D workflows,
+            water treatment systems, and multidisciplinary coordination.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Project & Team Leadership</h3>
+          <p>
+            Team handling, design reviews, project coordination,
+            quality checking, and client communication.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EXPERIENCE -->
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">Professional Experience</h2>
+
+      <div class="experience">
+
+        <div class="exp-item">
+
+          <h3>Senior Design Engineer / Lead</h3>
+
+          <h4>
+            Creative Synergies Consulting India Pvt. Ltd. | 2017 – Present
+          </h4>
+
+          <ul>
+            <li>
+              Led multidisciplinary engineering teams for industrial equipment,
+              utility systems, piping, skid packages, and fabrication-oriented projects.
+            </li>
+
+            <li>
+              Executed 3D modelling, Plant 3D routing, fabrication drawings,
+              assembly detailing, piping isometrics, and BOM generation.
+            </li>
+
+            <li>
+              Worked on industrial water treatment systems, hydrogen systems,
+              ozone systems, utility piping, and process equipment packages.
+            </li>
+
+            <li>
+              Supported Kurita USA and Micron-related engineering projects
+              involving multidisciplinary coordination and international standards.
+            </li>
+
+            <li>
+              Coordinated with civil, structural, instrumentation, electrical,
+              fabrication, and project teams for integrated project execution.
+            </li>
+
+            <li>
+              Mentored junior engineers and improved design quality,
+              review workflows, and project delivery efficiency.
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="exp-item">
+
+          <h3>Design Engineer</h3>
+
+          <h4>
+            Creative Synergies Consulting India Pvt. Ltd. | 2014 – 2017
+          </h4>
+
+          <ul>
+
+            <li>
+              Worked on piping, structural, sheet metal, and mechanical equipment engineering projects.
+            </li>
+
+            <li>
+              Developed fabrication drawings, assemblies, machine components,
+              skid packages, and 3D CAD models using Inventor and AutoCAD.
+            </li>
+
+            <li>
+              Supported industrial utility piping and fabrication projects
+              from concept to manufacturing support.
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="exp-item">
+
+          <h3>Design Engineer</h3>
+
+          <h4>
+            Fowler Westrup India Pvt. Ltd. | 2011 – 2014
+          </h4>
+
+          <ul>
+
+            <li>
+              Designed transformer oil skids, industrial equipment,
+              trailer frames, and fabrication assemblies.
+            </li>
+
+            <li>
+              Developed manufacturing drawings, assembly layouts,
+              BOM documentation, and structural fabrication details.
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">Technical Skills</h2>
+
+      <div class="skills">
+
+        <div class="skill">Mechanical Design</div>
+        <div class="skill">Machine Design</div>
+        <div class="skill">Industrial Equipment Design</div>
+        <div class="skill">3D CAD Modelling</div>
+        <div class="skill">GD&T</div>
+        <div class="skill">Fabrication Drawings</div>
+        <div class="skill">Assembly Design</div>
+        <div class="skill">Sheet Metal Design</div>
+        <div class="skill">Structural Design</div>
+        <div class="skill">Piping Design</div>
+        <div class="skill">Plant 3D</div>
+        <div class="skill">AutoCAD</div>
+        <div class="skill">Autodesk Inventor</div>
+        <div class="skill">SolidWorks</div>
+        <div class="skill">Revit</div>
+        <div class="skill">Navisworks</div>
+        <div class="skill">BIM Coordination</div>
+        <div class="skill">BOM & MTO</div>
+        <div class="skill">P&ID Interpretation</div>
+        <div class="skill">ASME / ANSI Standards</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EDUCATION -->
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">Education</h2>
+
+      <div class="education-card">
+
+        <h3>Diploma in Mechanical Engineering</h3>
+
         <p>
-          Plant 3D modelling, piping layouts, isometric extraction,
-          orthographic generation, and multidisciplinary coordination.
+          State Board of Technical Education | 2009
         </p>
-      </div>
 
-      <div class="card">
-        <h3>Mechanical Design</h3>
-        <p>
-          Industrial equipment design, skid packages, sheet metal,
-          structural assemblies, and fabrication-oriented engineering.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Project Leadership</h3>
-        <p>
-          Team handling, project coordination, quality reviews,
-          client discussions, and resource planning.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Water & Utility Systems</h3>
-        <p>
-          Utility piping, ozone systems, hydrogen systems,
-          filtration packages, and industrial water treatment projects.
-        </p>
       </div>
 
     </div>
 
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="container">
+  <!-- FOOTER -->
 
-    <h2 class="section-title">Experience</h2>
+  <footer>
 
-    <div class="experience">
+    © 2026 Abdul Rizwan S G | Mechanical Design Portfolio
 
-      <div class="exp-item">
-        <h3>Senior Design Engineer / Lead</h3>
-        <h4>Creative Synergies Consulting India Pvt. Ltd. | 2017 – Present</h4>
-
-        <ul>
-          <li>Led multidisciplinary engineering teams for piping, utility, and industrial projects.</li>
-          <li>Executed Plant 3D modelling, piping layouts, isometric extraction, and BOM generation.</li>
-          <li>Handled water treatment, ozone, hydrogen, and skid package projects.</li>
-          <li>Supported Kurita USA and Micron-related industrial projects.</li>
-          <li>Coordinated with civil, structural, instrumentation, and electrical teams.</li>
-          <li>Mentored junior engineers and improved design quality processes.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <h3>Design Engineer</h3>
-        <h4>Creative Synergies Consulting India Pvt. Ltd. | 2014 – 2017</h4>
-
-        <ul>
-          <li>Worked on piping, structural, and sheet metal engineering projects.</li>
-          <li>Created fabrication drawings, assemblies, and 3D models using Inventor and AutoCAD.</li>
-          <li>Supported industrial utility piping and skid assembly projects.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <h3>Design Engineer</h3>
-        <h4>Fowler Westrup India Pvt. Ltd. | 2011 – 2014</h4>
-
-        <ul>
-          <li>Designed transformer oil skids, trailer frames, and industrial equipment structures.</li>
-          <li>Developed fabrication drawings and manufacturing documentation.</li>
-        </ul>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<section>
-  <div class="container">
-
-    <h2 class="section-title">Technical Skills</h2>
-
-    <div class="skills">
-      <div class="skill">AutoCAD Plant 3D</div>
-      <div class="skill">Autodesk Inventor</div>
-      <div class="skill">SolidWorks</div>
-      <div class="skill">Revit</div>
-      <div class="skill">Navisworks</div>
-      <div class="skill">AutoCAD</div>
-      <div class="skill">Piping Design</div>
-      <div class="skill">Skid Packages</div>
-      <div class="skill">Sheet Metal</div>
-      <div class="skill">BIM Coordination</div>
-      <div class="skill">Utility Piping</div>
-      <div class="skill">Fabrication Drawings</div>
-      <div class="skill">P&ID Interpretation</div>
-      <div class="skill">ASME / ANSI</div>
-    </div>
-
-  </div>
-</section>
-
-<section>
-  <div class="container">
-
-    <h2 class="section-title">Education</h2>
-
-    <div class="card">
-      <h3>Diploma in Mechanical Engineering</h3>
-      <p>State Board of Technical Education | 2009</p>
-    </div>
-
-  </div>
-</section>
-
-<footer>
-  © 2026 Abdul Rizwan S G | Mechanical Design Portfolio
-</footer>
+  </footer>
 
 </body>
 </html>
+```
